@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <form name="submit-to-google-sheet">
+      <h1>Job Application <span>(Web)</span></h1>
+      <div class="flex">
+        <div class="inp">
+          <label for="firstName">First Name</label>
+          <input
+            type="text"
+            id="firstName"
+            name="First Name"
+            placeholder="Enter First Name..."
+            required
+          />
+        </div>
+        <div class="inp">
+          <label for="lastName">Last Name</label>
+          <input
+            type="text"
+            id="lastName"
+            name="Last Name"
+            placeholder="Enter Last Name..."
+            required
+          />
+        </div>
+        <div class="inp">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="Email"
+            placeholder="Enter Email..."
+            required
+          />
+        </div>
+        <div class="inp">
+          <label for="jobRole">Job Role</label>
+          <select name="JobRole" id="jobRole" required>
+            <option value="">Select Job Role</option>
+            <option value="WD">Web Developer</option>
+            <option value="AD">Android Developer</option>
+            <option value="HE">Hardware Expert</option>
+            <option value="SE">Software Engineer</option>
+          </select>
+        </div>
+      </div>
+      <div class="inp">
+        <label for="address">Address</label>
+        <textarea
+          name="Address"
+          id="address"
+          cols="30"
+          rows="5"
+          placeholder="Enter Address"
+          required
+        ></textarea>
+      </div>
+      <div class="flex">
+        <div class="inp">
+          <label for="city">City</label>
+          <input
+            type="text"
+            id="city"
+            name="City"
+            placeholder="Enter City Name..."
+            required
+          />
+        </div>
+        <div class="inp">
+          <label for="pincode">Pincode</label>
+          <input
+            type="text"
+            maxlength="6"
+            name="Pincode"
+            id="pincode"
+            placeholder="Enter Pincode Nme..."
+            required
+          />
+        </div>
+        <div class="inp">
+          <label for="date">Date</label>
+          <input type="date" id="date" name="Date" value="today" required />
+        </div>
+        <div class="inp">
+          <label for="cv">Upload Your CV</label>
+          <input type="file" name="CV" class="cv" required />
+        </div>
+      </div>
+      <button class="submit">Apply Now</button>
+      <span id="msg"></span>
+    </form>
+
+    <script>
+      const scriptURL =
+        "https://script.google.com/macros/s/AKfycbzt8nC3LpuDHsO2-ZH4UiJQccNj6sk1kh_MZZzmYM4za3wvS12iCi9vVMWZjGsOZV7X/exec";
+      const form = document.forms["submit-to-google-sheet"];
+      const msg = document.getElementById("msg");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        fetch(scriptURL, { method: "POST", body: new FormData(form) })
+          .then((response) => {
+            msg.innerHTML = "Form applied successfully!!";
+            setTimeout(function () {
+              msg.innerHTML = "";
+            }, 3000);
+            form.reset();
+          })
+          .catch((error) => console.error("Error!", error.message));
+      });
+    </script>
+  </body>
+</html>

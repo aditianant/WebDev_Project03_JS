@@ -1,0 +1,83 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: gray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+form {
+  background: white;
+  max-width: 40rem;
+  padding: 2rem;
+  -webkit-box-shadow: 1px 1px 9px 1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 1px 1px 9px 1px rgba(0, 0, 0, 0.75);
+  box-shadow: 1px 1px 9px 1px rgba(0, 0, 0, 0.75);
+  display: flex;
+  flex-direction: column;
+  border-radius: 1rem;
+}
+
+.inp {
+  display: flex;
+  flex-direction: column;
+  margin: 0.5rem;
+}
+
+label {
+  font-size: 0.96rem;
+}
+
+input,
+select {
+  min-width: 17rem;
+  padding: 0.25rem;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+span {
+  font-weight: 300;
+  font-size: 1.5rem;
+}
+
+.submit {
+  background: red;
+  color: white;
+  padding: 0.5rem 2rem;
+  width: fit-content;
+  border-radius: 0.5rem;
+  margin-left: auto;
+  border: none;
+}
+.submit:hover {
+  border: 2px solid black;
+  background-color: rgb(230, 40, 40);
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+
+#jobRole,
+.cv {
+  background: white;
+  border: 1px solid gray;
+  border-radius: 0.25rem;
+  padding: 0.35rem;
+}
+
+#msg {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-top: 1.5%;
+  color: green;
+  display: block;
+}
